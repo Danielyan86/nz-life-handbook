@@ -40,5 +40,3 @@ No
 ## 相关资料
 
 _Data Mining: Practical Machine Learning Tools and Techniques_  
-Weka 软件  
-Java 编程基础 
