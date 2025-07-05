@@ -1,2 +1,26 @@
 datalib
 .DS_Store
+
+# GitBook 生成目录
+_book/
+node_modules/
+
+
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*~
+
+# 日志文件
+*.log
+
+# 其他临时文件
+*.tmp
+*.temp
+.cache/
