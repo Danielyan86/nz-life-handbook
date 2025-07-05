@@ -57,10 +57,11 @@ nz-life-handbook/
 
 <div align="center">
 
-| 平台 | 账号 | 备注 |
+| 平台 | 名字 | 账号 |
 |------|------|------|
-| 🟥 **小红书** | [不想卷的阿东](https://www.xiaohongshu.com/user/profile/588659006) | 588659006 |
-| 💬 **微信** | `nz_adong` | 不想卷的阿东 |
+| 🟥 **小红书** | 不想卷的阿东 | 588659006 |
+| 💬 **微信** | 不想卷的阿东 | nz_adong |
+| 🔗 **LinkedIn** | [Yan Xiaodong](https://www.linkedin.com/in/yan-xiaodong/) |  |
 
 </div>
 
@@ -68,6 +69,6 @@ nz-life-handbook/
 
 <div align="center">
 
-**🌟 欢迎关注，一起分享新西兰留学经验！ 🌟**
+**🌟 欢迎关注，一起分享新西兰留学经验！ 欢迎一起来提交PR啊🌟**
 
 </div>
