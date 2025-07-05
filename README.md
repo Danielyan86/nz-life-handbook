@@ -19,10 +19,10 @@ nz-life-handbook/
 
 ## 🚀 快速导航
 
-- **准备阶段**：[登录前准备](./登录前准备/) - 签证、材料、心理准备等
-- **专业选择**：[专业选择](./专业选择/) - IT专业相关建议和经验分享
-- **生活指南**：[生活](./生活/) - 住宿、交通、饮食、文化适应等
-- **时间线**：[登录新西兰完整时间线](./登录新西兰完整时间线.md) - 详细的申请和适应过程
+- **准备阶段**：[登录前准备](https://github.com/Danielyan86/nz-life-handbook/blob/main/登录前准备/) - 签证、材料、心理准备等
+- **专业选择**：[专业选择](https://github.com/Danielyan86/nz-life-handbook/blob/main/专业选择/) - IT专业相关建议和经验分享
+- **生活指南**：[生活](https://github.com/Danielyan86/nz-life-handbook/blob/main/生活/) - 住宿、交通、饮食、文化适应等
+- **时间线**：[登录新西兰完整时间线](https://github.com/Danielyan86/nz-life-handbook/blob/main/新西兰生存完整时间轴.md) - 详细的申请和适应过程
 
 ## 自我介绍
 
@@ -45,7 +45,7 @@ nz-life-handbook/
 - **2025年6月** 找到工作终于落实下来，加入Datacom，开始做AI QA方向的工作，
 因为还没毕业，还不是全职牛马。
 
-详细时间线参考：[登录新西兰完整时间线](./登录新西兰完整时间线.md)
+详细时间线参考：[新西兰生存完整时间轴](https://github.com/Danielyan86/nz-life-handbook/blob/main/新西兰生存完整时间轴.md)
 
 ## 🎯 最后
 
