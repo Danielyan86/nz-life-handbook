@@ -13,11 +13,12 @@
 
 ## 🎓 怀大IT课程
 
-* [COMPX519 - 恶意软件分析与渗透测试](怀大IT课程/COMPX519-Malware Analysis and Penetration Testing.md)
-* [COMPX521 - 机器学习算法](怀大IT课程/COMPX521-Machine Learning Algorithms.md)
-* [COMPX525 - 深度学习](怀大IT课程/COMPX525-Deep Learning.md)
-* [COMPX575 - 编程工具与技术](怀大IT课程/COMPX575-Programming Tools and Techniques.md)
-* [CSMAX570 - 实习准备](怀大IT课程/CSMAX570-Internship preparation.md)
+* [COMPX519 - 恶意软件分析与渗透测试](怀大IT课程/COMPX519-Malware%20Analysis%20and%20Penetration%20Testing.md)
+* [COMPX521 - 机器学习算法](怀大IT课程/COMPX521-Machine%20Learning%20Algorithms.md)
+* [COMPX525 - 深度学习](怀大IT课程/COMPX525-Deep%20Learning.md)
+* [GEOGY558 - 应用地理信息系统](怀大IT课程/GEOGY558-Applied%20Geographic%20Information%20Systems%20for%20Research%20and%20Planning.md)
+* [COMPX575 - 编程工具与技术](怀大IT课程/COMPX575-Programming%20Tools%20and%20Techniques.md)
+* [CSMAX570 - 实习准备](怀大IT课程/CSMAX570-Internship%20preparation.md)
 
 ## 💼 工作相关
 
