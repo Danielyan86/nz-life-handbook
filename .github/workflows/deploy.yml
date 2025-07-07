@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Build Docsify
+      run: |
+        mkdir -p _book
+        cp -r 登录前准备 生活 怀大IT课程 工作 英语学习 _book/ 2>/dev/null || true
+        cp *.md _book/ 2>/dev/null || true
+        cp index.html _book/
+        cp _sidebar.md _book/
+        cp -r imgs _book/ 2>/dev/null || true
+        cp -r datalib _book/ 2>/dev/null || true
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './_book'
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4 
