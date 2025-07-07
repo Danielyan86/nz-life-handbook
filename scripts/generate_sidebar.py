@@ -84,29 +84,26 @@ def generate_sidebar_content(root_dir='.'):
     for dir_name in sorted(os.listdir(root_dir)):
         dir_path = os.path.join(root_dir, dir_name)
         if os.path.isdir(dir_path) and should_include_file(dir_name, is_dir=True):
-            content.append(f'## {dir_name}\n')
-            
-            # 如果有 README.md，添加为分组入口链接
+            # 目录分组头，指向 README.md
             readme_path = os.path.join(dir_path, 'README.md')
-            if os.path.exists(readme_path) and should_include_file('README.md'):
+            if os.path.exists(readme_path):
                 encoded_readme = url_encode_path(f'{dir_name}/README.md')
                 content.append(f'* [{dir_name}]({encoded_readme})\n')
+            else:
+                content.append(f'* {dir_name}\n')
             
-            # 获取目录下的其他文件
+            # 获取目录下的其他 md 文件
             files = []
             for item in os.listdir(dir_path):
                 if item.endswith('.md') and should_include_file(item) and item != 'README.md':
                     files.append(item)
             
-            # 按文件名排序
             for file in sorted(files):
                 file_path = os.path.join(dir_path, file)
                 title = get_title_from_markdown(file_path)
                 rel_path = f'{dir_name}/{file}'
                 encoded_path = url_encode_path(rel_path)
-                content.append(f'* [{title}]({encoded_path})\n')
-            
-            content.append('\n')
+                content.append(f'  * [{title}]({encoded_path})\n')
     
     return ''.join(content)
 
