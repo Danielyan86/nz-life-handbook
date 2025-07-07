@@ -89,10 +89,16 @@ def generate_sidebar_content(root_dir='.'):
         if os.path.isdir(dir_path) and should_include_file(dir_name):
             content.append(f'## {dir_name}\n')
             
-            # 获取目录下的文件
+            # 如果有 README.md，添加为分组入口链接
+            readme_path = os.path.join(dir_path, 'README.md')
+            if os.path.exists(readme_path) and should_include_file('README.md'):
+                encoded_readme = url_encode_path(f'{dir_name}/README.md')
+                content.append(f'* [{dir_name}]({encoded_readme})\n')
+            
+            # 获取目录下的其他文件
             files = []
             for item in os.listdir(dir_path):
-                if item.endswith('.md') and should_include_file(item):
+                if item.endswith('.md') and should_include_file(item) and item != 'README.md':
                     files.append(item)
             
             # 按文件名排序
