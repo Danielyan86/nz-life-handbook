@@ -26,26 +26,23 @@ def get_title_from_markdown(file_path):
     except:
         return Path(file_path).stem
 
-def should_include_file(filename):
-    """判断是否应该包含该文件"""
-    # 排除的文件
+def should_include_file(filename, is_dir=False):
+    """判断是否应该包含该文件或目录"""
     exclude_files = {
         'README.md', '_sidebar.md', '.DS_Store', '.gitignore',
         'LICENSE', 'index.html'
     }
-    
-    # 排除的目录
     exclude_dirs = {
         '.git', '.github', 'scripts', '__pycache__', '.vscode', 'datalib'
     }
-    
-    if filename in exclude_files:
-        return False
-    
-    if filename.startswith('.'):
-        return False
-    
-    return True
+    if is_dir:
+        if filename in exclude_dirs or filename.startswith('.'):
+            return False
+        return True
+    else:
+        if filename in exclude_files or filename.startswith('.'):
+            return False
+        return True
 
 def url_encode_path(path):
     """对路径做 URL 编码，保留斜杠分隔"""
@@ -86,7 +83,7 @@ def generate_sidebar_content(root_dir='.'):
     # 自动遍历实际存在的目录
     for dir_name in sorted(os.listdir(root_dir)):
         dir_path = os.path.join(root_dir, dir_name)
-        if os.path.isdir(dir_path) and should_include_file(dir_name):
+        if os.path.isdir(dir_path) and should_include_file(dir_name, is_dir=True):
             content.append(f'## {dir_name}\n')
             
             # 如果有 README.md，添加为分组入口链接
