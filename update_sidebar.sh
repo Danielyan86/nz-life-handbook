@@ -14,4 +14,4 @@ else
 fi
 
 echo "✅ 侧边栏更新完成！"
-echo "�� 提示: 记得提交更改到 Git" 
+echo "提示: 记得提交更改到 Git" 

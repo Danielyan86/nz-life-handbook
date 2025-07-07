@@ -26,6 +26,11 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v4
     
+    - name: Update Docsify Sidebar
+      run: |
+        chmod +x update_sidebar.sh
+        ./update_sidebar.sh
+    
     - name: Build Docsify
       run: |
         mkdir -p _book
