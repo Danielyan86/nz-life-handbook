@@ -1,3 +1,5 @@
+[CSMAX570 Preparing for Internship 官方课程链接](https://www.waikato.ac.nz/study/papers/csmax570/2025/)
+
 ## 课程简介
 
 CSMAX570 - 实习准备课是 IT 授课型硕士第二学期的必修课程。对于具有三年相关 IT 工作经验的同学，可以申请免修并直接获得学分。

@@ -1,3 +1,5 @@
+[COMPX575 Programming Tools and Techniques 官方课程链接](https://www.waikato.ac.nz/study/papers/compx575/2025/)
+
 ## 课程简介
 
 COMPX575-24B (HAM) - Programming Tools and Techniques 不要被名字迷惑了，大白话给你说这个课就是给你讲编程可能用到的一些编程语言和工具。

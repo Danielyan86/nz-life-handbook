@@ -1,7 +1,8 @@
+[COMPX521 Interpretable Machine Learning 官方课程链接](https://www.waikato.ac.nz/study/papers/compx521/2025/)
+
 ## 课程简介
 
 **COMPX521 Machine Learning Algorithms**  
-[课程链接](https://www.waikato.ac.nz/study/papers/compx521/2025/)  
 注意审题，这课是讲算法的，不是讲机器学习应用的。
 
 以这本书为蓝本：_Data Mining: Practical Machine Learning Tools and Techniques_，主要讲述了机器学习里面的决策树算法，围绕决策树还讲了 boost、bagging、rule 算法等，还有各种模型评估方法。不会涉及深度学习这些内容。
