@@ -61,15 +61,6 @@ def generate_sidebar_content(root_dir='.'):
         '新西兰生存完整时间轴.md': '新西兰生存完整时间轴'
     }
     
-    # 目录分类
-    dir_categories = {
-        '登录前准备': '登录前准备',
-        '生活': '🏠 生活指南',
-        '怀大IT课程': '怀大IT课程',
-        '工作': '💼 工作相关',
-        '英语学习': '📚 英语学习'
-    }
-    
     # 处理根目录下的 Markdown 文件
     root_files = []
     for item in os.listdir(root_dir):
@@ -92,11 +83,11 @@ def generate_sidebar_content(root_dir='.'):
     
     content.append('\n')
     
-    # 处理分类目录
-    for dir_name, display_name in dir_categories.items():
+    # 自动遍历实际存在的目录
+    for dir_name in sorted(os.listdir(root_dir)):
         dir_path = os.path.join(root_dir, dir_name)
-        if os.path.exists(dir_path) and os.path.isdir(dir_path):
-            content.append(f'## {display_name}\n')
+        if os.path.isdir(dir_path) and should_include_file(dir_name):
+            content.append(f'## {dir_name}\n')
             
             # 获取目录下的文件
             files = []
