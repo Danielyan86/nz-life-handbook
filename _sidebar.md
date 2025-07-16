@@ -1,6 +1,8 @@
 <!-- docs/_sidebar.md -->
 * [新西兰生存完整时间轴](%E6%96%B0%E8%A5%BF%E5%85%B0%E7%94%9F%E5%AD%98%E5%AE%8C%E6%95%B4%E6%97%B6%E9%97%B4%E8%BD%B4.md)
 
+* [ABC](ABC/README.md)
+  * [测试](ABC/%E6%B5%8B%E8%AF%95.md)
 * [cursor-rules](cursor-rules/README.md)
 * imgs
 * [工作](%E5%B7%A5%E4%BD%9C/README.md)
@@ -27,7 +29,5 @@
   * [学生签续签申请](%E7%AD%BE%E8%AF%81/%E5%AD%A6%E7%94%9F%E7%AD%BE%E7%BB%AD%E7%AD%BE%E7%94%B3%E8%AF%B7.md)
   * [学签常见问题](%E7%AD%BE%E8%AF%81/%E5%AD%A6%E7%AD%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.md)
   * [签证时间线](%E7%AD%BE%E8%AF%81/%E7%AD%BE%E8%AF%81%E6%97%B6%E9%97%B4%E7%BA%BF.md)
-* [签证1](%E7%AD%BE%E8%AF%811/README.md)
-  * [测试](%E7%AD%BE%E8%AF%811/%E6%B5%8B%E8%AF%95.md)
 * [英语学习](%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/README.md)
   * [如何使用 ChatGPT 练习口语](%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%20ChatGPT%20%E7%BB%83%E4%B9%A0%E5%8F%A3%E8%AF%AD.md)
