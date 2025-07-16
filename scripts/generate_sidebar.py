@@ -45,8 +45,8 @@ def should_include_file(filename, is_dir=False):
         return True
 
 def url_encode_path(path):
-    """直接返回原始路径，不做编码"""
-    return path
+    """对路径进行 URL 编码，保留斜杠"""
+    return quote(path, safe="/")
 
 def generate_sidebar_content(root_dir='.'):
     """生成侧边栏内容"""
