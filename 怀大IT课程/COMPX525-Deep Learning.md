@@ -1,3 +1,5 @@
+# COMPX525-Deep Learning
+
 [COMPX525 Deep Learning 官方课程链接](https://www.waikato.ac.nz/study/papers/compx525/2025/)
 
 ## 课程简介

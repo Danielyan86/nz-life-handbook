@@ -1,3 +1,5 @@
+# COMPX521-Machine Learning Algorithms
+
 [COMPX521 Interpretable Machine Learning 官方课程链接](https://www.waikato.ac.nz/study/papers/compx521/2025/)
 
 ## 课程简介

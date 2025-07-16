@@ -1,6 +1,6 @@
 [GEOGY558 Applied Geographic Information Systems for Research and Planning 官方课程链接](https://www.waikato.ac.nz/study/papers/geogy558/2025/)
 
-# GEOGY558 - Applied Geographic Information Systems for Research and Planning
+# GEOGY558-Applied Geographic Information Systems for Research and Planning
 
 ## 📋 课程基本信息
 

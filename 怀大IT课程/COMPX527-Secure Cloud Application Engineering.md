@@ -1,4 +1,4 @@
-# COMPX527 Secure Cloud Application Engineering
+# COMPX527-Secure Cloud Application Engineering
 
 ## 课程简介
 
