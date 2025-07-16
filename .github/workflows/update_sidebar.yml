@@ -1,0 +1,30 @@
+name: Update Sidebar
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-sidebar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt || true
+      - name: Run generate_sidebar.py
+        run: |
+          python scripts/generate_sidebar.py
+      - name: Commit and push sidebar
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add _sidebar.md
+          git commit -m 'Auto-update sidebar via GitHub Actions' || echo 'No changes to commit'
+          git push
