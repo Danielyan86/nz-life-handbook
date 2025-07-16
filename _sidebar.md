@@ -1,6 +1,11 @@
 <!-- docs/_sidebar.md -->
 * [新西兰生存完整时间轴](%E6%96%B0%E8%A5%BF%E5%85%B0%E7%94%9F%E5%AD%98%E5%AE%8C%E6%95%B4%E6%97%B6%E9%97%B4%E8%BD%B4.md)
 
+*  签证相关
+  * [DIY 留学准备 - 签证篇](%20%E7%AD%BE%E8%AF%81%E7%9B%B8%E5%85%B3/DIY%20%E7%95%99%E5%AD%A6%E5%87%86%E5%A4%87%20-%20%E7%AD%BE%E8%AF%81%E7%AF%87.md)
+  * [学生签续签申请](%20%E7%AD%BE%E8%AF%81%E7%9B%B8%E5%85%B3/%E5%AD%A6%E7%94%9F%E7%AD%BE%E7%BB%AD%E7%AD%BE%E7%94%B3%E8%AF%B7.md)
+  * [学签和课程注册常见问题](%20%E7%AD%BE%E8%AF%81%E7%9B%B8%E5%85%B3/%E5%AD%A6%E7%AD%BE%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98.md)
+  * [签证时间线](%20%E7%AD%BE%E8%AF%81%E7%9B%B8%E5%85%B3/%E7%AD%BE%E8%AF%81%E6%97%B6%E9%97%B4%E7%BA%BF.md)
 * imgs
 * [工作](%E5%B7%A5%E4%BD%9C/README.md)
 * [怀大IT课程](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/README.md)
@@ -8,10 +13,12 @@
   * [COMPX519-Malware Analysis and Penetration Testing](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/COMPX519-Malware%20Analysis%20and%20Penetration%20Testing.md)
   * [COMPX521-Machine Learning Algorithms](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/COMPX521-Machine%20Learning%20Algorithms.md)
   * [COMPX525-Deep Learning](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/COMPX525-Deep%20Learning.md)
+  * [COMPX527 Secure Cloud Application Engineering](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/COMPX527-Secure%20Cloud%20Application%20Engineering.md)
   * [COMPX575-Programming Tools and Techniques](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/COMPX575-Programming%20Tools%20and%20Techniques.md)
   * [CSMAX570-Internship preparation](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/CSMAX570-Internship%20preparation.md)
-  * [GEOGY558 - Applied Geographic Information Systems for Research and Planning](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/GEOGY558.md)
+  * [GEOGY558 - Applied Geographic Information Systems for Research and Planning](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/GEOGY558-Applied%20Geographic%20Information%20Systems%20for%20Research%20and%20Planning.md)
   * [怀大 IT Master 之准备篇](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/%E6%80%80%E5%A4%A7IT%20Master%E4%B9%8B%E5%87%86%E5%A4%87%E7%AF%87.md)
+  * [怎么提前查看每个课程的考核形式](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/%E6%80%8E%E4%B9%88%E6%8F%90%E5%89%8D%E6%9F%A5%E7%9C%8B%E6%AF%8F%E4%B8%AA%E8%AF%BE%E7%A8%8B%E7%9A%84%E8%80%83%E6%A0%B8%E5%BD%A2%E5%8A%BF.md)
   * [课程的考核形式](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/%E8%AF%BE%E7%A8%8B%E7%9A%84%E8%80%83%E6%A0%B8%E5%BD%A2%E5%8A%BF.md)
 * [生活](%E7%94%9F%E6%B4%BB/README.md)
   * [生活开销](%E7%94%9F%E6%B4%BB/%E7%94%9F%E6%B4%BB%E5%BC%80%E9%94%80.md)
