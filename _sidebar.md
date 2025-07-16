@@ -1,6 +1,7 @@
 <!-- docs/_sidebar.md -->
 * [新西兰生存完整时间轴](%E6%96%B0%E8%A5%BF%E5%85%B0%E7%94%9F%E5%AD%98%E5%AE%8C%E6%95%B4%E6%97%B6%E9%97%B4%E8%BD%B4.md)
 
+* [cursor-rules](cursor-rules/README.md)
 * imgs
 * [工作](%E5%B7%A5%E4%BD%9C/README.md)
 * [怀大IT课程](%E6%80%80%E5%A4%A7IT%E8%AF%BE%E7%A8%8B/README.md)
