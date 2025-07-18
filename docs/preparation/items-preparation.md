@@ -9,7 +9,7 @@
 | 💰 **现金**     | 400纽币              | 建议金额       |
 | 🚗 **驾照**     | 中国驾照             | 如有的话       |
 
-[详细物品清单]!(https://s1405cj9wr.feishu.cn/sheets/SslosxoqCh9Z5gtgEjlcBm1jnIe?from=from_copylink)
+[详细物品清单](https://s1405cj9wr.feishu.cn/sheets/SslosxoqCh9Z5gtgEjlcBm1jnIe?from=from_copylink)
 ### 🏠 住宿选择对比
 
 | 类型       | 价格范围     | 优点             | 缺点         |
