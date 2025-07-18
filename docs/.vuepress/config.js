@@ -1,13 +1,13 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
-import { viteBundler } from '@vuepress/bundler-vite'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 
 export default defineUserConfig({
   lang: 'zh-CN',
   title: '新西兰留学生上岸手册',
   description: '帮助新同学快速适应新西兰生活，避坑少走弯路',
   
-  bundler: viteBundler(),
+  bundler: webpackBundler(),
   
   theme: defaultTheme({
     navbar: [
