@@ -1,26 +1,65 @@
-datalib
-.DS_Store
+# VuePress 生成目录
+docs/.vuepress/dist/
+docs/.vuepress/.temp/
+docs/.vuepress/.cache/
 
-# GitBook 生成目录
-_book/
+# Node.js 依赖
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-
+# 系统文件
+.DS_Store
 .DS_Store?
+**/.DS_Store
+**/.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+ehthumbs.db
+Thumbs.db
 
 # 编辑器配置
 .vscode/
 .idea/
 *.swp
 *~
+*.sublime-project
+*.sublime-workspace
 
 # 日志文件
 *.log
+logs/
+*.log.*
 
-# 其他临时文件
+# 临时文件
 *.tmp
 *.temp
 .cache/
+.temp/
+.tmp/
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 构建输出
+dist/
+build/
+out/
+
+# 旧版文档生成目录（已迁移到VuePress）
+_book/
+datalib/
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 其他
+*.tgz
+*.tar.gz
