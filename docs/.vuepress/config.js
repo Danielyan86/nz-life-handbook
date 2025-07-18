@@ -42,52 +42,115 @@ export default defineUserConfig({
         {
           text: '怀大IT课程',
           children: [
-            '/courses/abc-difference.md',
-            '/courses/assessment-forms.md',
-            '/courses/compx519.md',
-            '/courses/compx521.md',
-            '/courses/compx525.md',
-            '/courses/compx527.md',
-            '/courses/compx575.md',
-            '/courses/csmax570.md',
-            '/courses/geogy558.md',
-            '/courses/how-to-check-assessment.md',
-            '/courses/preparation.md',
+            {
+              text: 'ABC学期入学有什么区别',
+              link: '/courses/abc-difference.md',
+            },
+            {
+              text: '课程的考核形势',
+              link: '/courses/assessment-forms.md',
+            },
+            {
+              text: 'COMPX519-Malware Analysis and Penetration Testing',
+              link: '/courses/compx519.md',
+            },
+            {
+              text: 'COMPX521-Machine Learning Algorithms',
+              link: '/courses/compx521.md',
+            },
+            {
+              text: 'COMPX525-Deep Learning',
+              link: '/courses/compx525.md',
+            },
+            {
+              text: 'COMPX527-Secure Cloud Application Engineering',
+              link: '/courses/compx527.md',
+            },
+            {
+              text: 'COMPX575-Programming Tools and Techniques',
+              link: '/courses/compx575.md',
+            },
+            {
+              text: 'CSMAX570-Internship preparation',
+              link: '/courses/csmax570.md',
+            },
+            {
+              text: 'GEOGY558-Applied Geographic Information Systems',
+              link: '/courses/geogy558.md',
+            },
+            {
+              text: '怎么提前查看每个课程的考核形势',
+              link: '/courses/how-to-check-assessment.md',
+            },
+            {
+              text: '怀大IT Master之准备篇',
+              link: '/courses/preparation.md',
+            },
           ],
         },
         {
           text: '英语学习',
           children: [
-            '/english/chatgpt-speaking.md',
+            {
+              text: '如何使用 ChatGPT 练习口语',
+              link: '/english/chatgpt-speaking.md',
+            },
           ],
         },
         {
           text: '生活',
           children: [
-            '/life/expenses.md',
+            {
+              text: '生活开销',
+              link: '/life/expenses.md',
+            },
           ],
         },
         {
           text: '登录前准备',
           children: [
-            '/preparation/items-preparation.md',
-            '/preparation/mindset-preparation.md',
-            '/preparation/visa-diy.md',
+            {
+              text: '出发前物品准备',
+              link: '/preparation/items-preparation.md',
+            },
+            {
+              text: '大龄留学准备 - 心态篇',
+              link: '/preparation/mindset-preparation.md',
+            },
+            {
+              text: '签证DIY',
+              link: '/preparation/visa-diy.md',
+            },
           ],
         },
         {
           text: '签证',
           children: [
-            '/visa/common-questions.md',
-            '/visa/diy-preparation.md',
-            '/visa/student-visa-renewal.md',
-            '/visa/timeline.md',
+            {
+              text: '学签常见问题',
+              link: '/visa/common-questions.md',
+            },
+            {
+              text: 'DIY 留学准备 - 签证篇',
+              link: '/visa/diy-preparation.md',
+            },
+            {
+              text: '学生签续签申请',
+              link: '/visa/student-visa-renewal.md',
+            },
+            {
+              text: '签证时间线',
+              link: '/visa/timeline.md',
+            },
           ],
         },
         {
           text: '工作',
           children: [
-            '/work/README.md',
+            {
+              text: '工作相关',
+              link: '/work/README.md',
+            },
           ],
         },
       ],
