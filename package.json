@@ -1,0 +1,29 @@
+{
+  "name": "nz-life-handbook",
+  "version": "1.0.0",
+  "description": "新西兰留学生上岸手册",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "serve": "vuepress serve docs",
+    "update-sidebar": "node scripts/update-sidebar.js",
+    "deploy": "npm run build && npm run deploy:gh-pages",
+    "deploy:gh-pages": "gh-pages -d docs/.vuepress/dist"
+  },
+  "keywords": [
+    "vuepress",
+    "新西兰",
+    "留学",
+    "手册"
+  ],
+  "author": "阿东",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^2.0.0-rc.14",
+    "@vuepress/theme-default": "^2.0.0-rc.14",
+    "@vuepress/plugin-search": "^2.0.0-rc.14",
+    "@vuepress/bundler-vite": "^2.0.0-rc.14",
+    "sass": "^1.69.0"
+  }
+} 
