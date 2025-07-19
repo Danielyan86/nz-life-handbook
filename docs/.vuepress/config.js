@@ -75,10 +75,6 @@ export default defineUserConfig({
         text: '时间轴',
         link: '/timeline/',
       },
-      {
-        text: 'GitHub',
-        link: 'https://github.com/Danielyan86/nz-life-handbook',
-      },
     ],
     
     sidebar: {
