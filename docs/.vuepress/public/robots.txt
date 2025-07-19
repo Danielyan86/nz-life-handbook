@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://danielyan86.github.io/nz-life-handbook/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1 
