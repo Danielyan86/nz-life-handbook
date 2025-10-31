@@ -127,6 +127,10 @@ export default defineUserConfig({
               link: '/courses/csmax570.md',
             },
             {
+              text: 'CSMAX596-Computer Science Internship',
+              link: '/courses/CSMAX596.md',
+            },
+            {
               text: 'GEOGY558-Applied Geographic Information Systems',
               link: '/courses/geogy558.md',
             },
