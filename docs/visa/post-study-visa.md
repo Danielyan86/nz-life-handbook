@@ -44,7 +44,7 @@
 
 ### Step 5: 代办信息 (Apply on Behalf / Assist)
 
-![代办信息](../../imgs/post_study_visa/7.png)
+如果你是自己申请（不是通过中介或他人代办），两个问题都选 "No" 即可。
 
 ### Step 6: 上传文件
 
