@@ -78,13 +78,76 @@ export default defineUserConfig({
     ],
     
     sidebar: {
-      '/': [
-        {
-          text: '首页',
-          children: [
-            '/README.md',
-          ],
-        },
+  '/': [
+    {
+      'text': '首页',
+      'children': [
+        '/README.md'
+      ]
+    },
+    {
+      'text': '时间轴',
+      'children': [
+        '/timeline/README.md'
+      ]
+    },
+    {
+      'text': '怀大IT课程',
+      'children': [
+        '/courses/CSMAX596.md',
+        '/courses/abc-difference.md',
+        '/courses/assessment-forms.md',
+        '/courses/compx519.md',
+        '/courses/compx521.md',
+        '/courses/compx525.md',
+        '/courses/compx527.md',
+        '/courses/compx575.md',
+        '/courses/csmax570.md',
+        '/courses/geogy558.md',
+        '/courses/how-to-check-assessment.md',
+        '/courses/preparation.md'
+      ]
+    },
+    {
+      'text': '英语学习',
+      'children': [
+        '/english/chatgpt-speaking.md'
+      ]
+    },
+    {
+      'text': '生活',
+      'children': [
+        '/life/expenses.md',
+        '/life/nz-tax.md'
+      ]
+    },
+    {
+      'text': '登录前准备',
+      'children': [
+        '/preparation/README.md',
+        '/preparation/items-preparation.md',
+        '/preparation/mindset-preparation.md',
+        '/preparation/visa-diy.md'
+      ]
+    },
+    {
+      'text': '签证',
+      'children': [
+        '/visa/common-questions.md',
+        '/visa/diy-preparation.md',
+        '/visa/post-study-visa.md',
+        '/visa/student-visa-renewal.md',
+        '/visa/timeline.md'
+      ]
+    },
+    {
+      'text': '工作',
+      'children': [
+        '/work/README.md'
+      ]
+    }
+  ]
+},
         {
           text: '时间轴',
           children: [
@@ -193,6 +256,10 @@ export default defineUserConfig({
             {
               text: '学生签续签申请',
               link: '/visa/student-visa-renewal.md',
+            },
+            {
+              text: '毕业后工签申请',
+              link: '/visa/post-study-visa.md',
             },
             {
               text: '签证时间线',
