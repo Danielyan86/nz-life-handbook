@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新西兰收入税收性价比分析</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .chart-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .chart-container {
+            position: relative;
+            height: 350px;
+        }
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .insight-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 25px;
+            color: white;
+        }
+        .insight-card.green {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .insight-card.orange {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .insight-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .insight-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .insight-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .insight-desc {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+        .sweet-zones {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .sweet-zones h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .zone {
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .zone-indicator {
+            width: 8px;
+            flex-shrink: 0;
+        }
+        .zone-content {
+            flex: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .zone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .zone-range {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .zone-rate {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .zone-detail {
+            color: #666;
+            font-size: 14px;
+        }
+        .zone.excellent .zone-indicator { background: #10b981; }
+        .zone.excellent .zone-rate { color: #10b981; }
+        .zone.good .zone-indicator { background: #3b82f6; }
+        .zone.good .zone-rate { color: #3b82f6; }
+        .zone.medium .zone-indicator { background: #f59e0b; }
+        .zone.medium .zone-rate { color: #f59e0b; }
+        .zone.high .zone-indicator { background: #ef4444; }
+        .zone.high .zone-rate { color: #ef4444; }
+        .zone.highest .zone-indicator { background: #991b1b; }
+        .zone.highest .zone-rate { color: #991b1b; }
+
+        .calculator {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .calculator h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .calc-input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .calc-input-group input {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+        }
+        .calc-input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .calc-input-group button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .calc-input-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .calc-result {
+            display: none;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .calc-result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .calc-result-item {
+            text-align: center;
+        }
+        .calc-result-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .calc-result-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+        .calc-result-value.green { color: #10b981; }
+        .calc-result-value.red { color: #ef4444; }
+        .calc-result-value.blue { color: #3b82f6; }
+
+        .comparison-bar {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        .bar-container {
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-net {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .bar-tax {
+            background: linear-gradient(90deg, #ef4444, #f87171);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .source {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            padding: 20px;
+        }
+        .source a {
+            color: #667eea;
+        }
+
+        .key-point {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+        .key-point h4 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+        .key-point p {
+            color: #78350f;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>新西兰收入税收性价比分析</h1>
+        <p class="subtitle">找到你的最佳收入区间 | 2025年4月起适用税率</p>
+
+        <!-- 关键洞察卡片 -->
+        <div class="insight-grid">
+            <div class="insight-card green">
+                <h3>$78,100 以下</h3>
+                <div class="insight-value">到手 68.4%+</div>
+                <div class="insight-desc">边际税率 ≤30%<br>含 ACC 后每 $1 到手 ≥$0.684</div>
+            </div>
+            <div class="insight-card blue">
+                <h3>$78,101 - $180,000</h3>
+                <div class="insight-value">到手 65.4%</div>
+                <div class="insight-desc">边际税率 33%<br>含 ACC 后每 $1 到手 $0.654</div>
+            </div>
+            <div class="insight-card orange">
+                <h3>$180,001+</h3>
+                <div class="insight-value">到手 59.4%</div>
+                <div class="insight-desc">边际税率 39%<br>含 ACC 后每 $1 到手 $0.594</div>
+            </div>
+        </div>
+
+        <!-- 边际收益率图表 -->
+        <div class="chart-card">
+            <div class="chart-title">
+                <span>📈</span> 边际收益率（每多赚 $1 实际到手金额）
+            </div>
+            <div class="chart-container">
+                <canvas id="marginalChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 有效税率图表 -->
+        <div class="chart-card">
+            <div class="chart-title">
+                <span>📊</span> 有效税率 vs 边际税率
+            </div>
+            <div class="chart-container">
+                <canvas id="rateChart"></canvas>
+            </div>
+        </div>
+
+        <!-- 性价比区间详解 -->
+        <div class="sweet-zones">
+            <h3>💰 收入性价比区间详解</h3>
+
+            <div class="zone excellent">
+                <div class="zone-indicator"></div>
+                <div class="zone-content">
+                    <div class="zone-header">
+                        <span class="zone-range">$0 - $15,600</span>
+                        <span class="zone-rate">到手 89.5%</span>
+                    </div>
+                    <div class="zone-detail">
+                        <strong>最佳性价比区间！</strong> 边际税率仅 10.5%。在这个区间内每多赚 $1，实际到手 $0.895。
+                        年收入 $15,600 时，税后到手 $13,962，仅缴税 $1,638。
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone good">
+                <div class="zone-indicator"></div>
+                <div class="zone-content">
+                    <div class="zone-header">
+                        <span class="zone-range">$15,601 - $53,500</span>
+                        <span class="zone-rate">到手 82.5%</span>
+                    </div>
+                    <div class="zone-detail">
+                        <strong>性价比依然不错。</strong> 边际税率 17.5%。大多数普通工薪收入落在这个区间。
+                        年收入 $53,500 时，有效税率仅 15.46%，税后到手 $45,229.50。
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone medium">
+                <div class="zone-indicator"></div>
+                <div class="zone-content">
+                    <div class="zone-header">
+                        <span class="zone-range">$53,501 - $78,100</span>
+                        <span class="zone-rate">到手 70%</span>
+                    </div>
+                    <div class="zone-detail">
+                        <strong>⚠️ 税率跳跃区！</strong> 边际税率跃升至 30%。这是增幅最大的一档（+12.5%）。
+                        如果收入刚过 $53,500，可考虑通过 KiwiSaver 多缴来优化税务。
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone high">
+                <div class="zone-indicator"></div>
+                <div class="zone-content">
+                    <div class="zone-header">
+                        <span class="zone-range">$78,101 - $180,000</span>
+                        <span class="zone-rate">到手 67%</span>
+                    </div>
+                    <div class="zone-detail">
+                        边际税率 33%。中高收入区间，但增幅仅 3%，相对平缓。
+                        年收入 $100,000 时，有效税率约 23.5%，税后到手 $76,530。
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone highest">
+                <div class="zone-indicator"></div>
+                <div class="zone-content">
+                    <div class="zone-header">
+                        <span class="zone-range">$180,001+</span>
+                        <span class="zone-rate">到手 61%</span>
+                    </div>
+                    <div class="zone-detail">
+                        最高边际税率 39%。高收入区间。
+                        年收入 $200,000 时，有效税率约 29.4%，税后到手 $141,077.50。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关键建议 -->
+        <div class="key-point">
+            <h4>💡 关键发现</h4>
+            <p>
+                <strong>最大"性价比断崖"：</strong>发生在 $53,500 这个临界点。超过这个金额后，每多赚 $1 的到手金额从 $0.825 骤降至 $0.70，降幅达 15%。<br><br>
+                <strong>实用建议：</strong>如果你的收入刚好超过 $53,500 一点点（比如 $55,000-$60,000），可以考虑：
+                1) 增加 KiwiSaver 贡献率；
+                2) 合理的税务规划；
+                3) 投资抵税项目。
+            </p>
+        </div>
+
+        <!-- 8万-20万详细分析 -->
+        <div class="sweet-zones" id="highIncomeAnalysis">
+            <h3>📊 $80,000 - $200,000 边际收益详细分析</h3>
+            <p style="color: #666; margin-bottom: 20px;">以下数据包含所得税 + ACC Levy (1.6%)，展示每个收入水平的实际到手情况</p>
+
+            <table class="bracket-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <th style="padding: 12px; color: white; text-align: center;">税前年薪</th>
+                        <th style="padding: 12px; color: white; text-align: center;">所得税</th>
+                        <th style="padding: 12px; color: white; text-align: center;">ACC</th>
+                        <th style="padding: 12px; color: white; text-align: center;">税后到手</th>
+                        <th style="padding: 12px; color: white; text-align: center;">到手比例</th>
+                        <th style="padding: 12px; color: white; text-align: center;">边际税率</th>
+                        <th style="padding: 12px; color: white; text-align: center;">每多赚$1到手</th>
+                    </tr>
+                </thead>
+                <tbody id="highIncomeTable">
+                </tbody>
+            </table>
+
+            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px;">
+                <h4 style="color: #2e7d32; margin-bottom: 10px;">💰 $80k-$200k 区间关键洞察</h4>
+                <ul style="color: #1b5e20; line-height: 2;">
+                    <li><strong>$78,100 是重要临界点</strong>：超过后边际税率从 30% → 33%，每 $1 到手从 $0.684 降到 $0.654</li>
+                    <li><strong>$142,283 是 ACC 上限</strong>：超过后 ACC 不再增加，边际扣除率略降</li>
+                    <li><strong>$180,000 是最高档起点</strong>：超过后边际税率跳到 39%，每 $1 只到手 $0.594</li>
+                    <li><strong>$80k-$180k 区间相对平稳</strong>：边际税率稳定在 33%，是"性价比平台期"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 计算器 -->
+        <div class="calculator">
+            <h3>🧮 个人税务计算器</h3>
+            <div class="calc-input-group">
+                <input type="number" id="incomeInput" placeholder="输入你的税前年收入 (NZD)">
+                <button onclick="calculateTax()">计算我的税务</button>
+            </div>
+            <div class="calc-result" id="calcResult">
+                <div class="calc-result-grid">
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">税前年收入</div>
+                        <div class="calc-result-value" id="resGross">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">税后到手</div>
+                        <div class="calc-result-value green" id="resNet">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">所得税</div>
+                        <div class="calc-result-value red" id="resTax">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">ACC (1.6%)</div>
+                        <div class="calc-result-value red" id="resACC">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">总扣除率</div>
+                        <div class="calc-result-value blue" id="resEffective">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">边际税率</div>
+                        <div class="calc-result-value" id="resMarginal">-</div>
+                    </div>
+                    <div class="calc-result-item">
+                        <div class="calc-result-label">每多赚$1到手</div>
+                        <div class="calc-result-value green" id="resMarginalNet">-</div>
+                    </div>
+                </div>
+                <div class="comparison-bar">
+                    <div class="bar-label">
+                        <span>收入分配</span>
+                        <span id="barLabels">-</span>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar-net" id="barNet" style="width: 80%;">到手</div>
+                        <div class="bar-tax" id="barTax" style="width: 20%;">税</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; text-align: center;">
+                    <div>
+                        <div style="color: #666; font-size: 12px;">每月到手</div>
+                        <div style="font-size: 20px; font-weight: 600; color: #10b981;" id="resMonthly">-</div>
+                    </div>
+                    <div>
+                        <div style="color: #666; font-size: 12px;">每周到手</div>
+                        <div style="font-size: 20px; font-weight: 600; color: #10b981;" id="resWeekly">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="source">
+            数据来源：<a href="https://www.ird.govt.nz/income-tax/income-tax-for-individuals/tax-codes-and-tax-rates-for-individuals/tax-rates-for-individuals" target="_blank">新西兰税务局 (IRD) 官方网站</a> | 2025年4月1日起适用
+        </p>
+    </div>
+
+    <script>
+        // 税率配置 (2025年4月起)
+        const taxBrackets = [
+            { min: 0, max: 15600, rate: 0.105 },
+            { min: 15600, max: 53500, rate: 0.175 },
+            { min: 53500, max: 78100, rate: 0.30 },
+            { min: 78100, max: 180000, rate: 0.33 },
+            { min: 180000, max: Infinity, rate: 0.39 }
+        ];
+
+        // ACC Earners' Levy (2024/2025: 1.60%, 上限收入 $142,283)
+        const ACC_RATE = 0.016;
+        const ACC_MAX_INCOME = 142283;
+
+        function calculateTaxForIncome(grossIncome) {
+            let tax = 0;
+            let remainingIncome = grossIncome;
+
+            for (const bracket of taxBrackets) {
+                if (remainingIncome <= 0) break;
+                const taxableInBracket = Math.min(remainingIncome, bracket.max - bracket.min);
+                tax += taxableInBracket * bracket.rate;
+                remainingIncome -= taxableInBracket;
+            }
+            return tax;
+        }
+
+        function calculateACC(grossIncome) {
+            const accableIncome = Math.min(grossIncome, ACC_MAX_INCOME);
+            return accableIncome * ACC_RATE;
+        }
+
+        function getMarginalRate(income) {
+            for (const bracket of taxBrackets) {
+                if (income <= bracket.max) return bracket.rate;
+            }
+            return taxBrackets[taxBrackets.length - 1].rate;
+        }
+
+        function getEffectiveRate(income) {
+            if (income === 0) return 0;
+            return calculateTaxForIncome(income) / income;
+        }
+
+        // 生成图表数据
+        const incomePoints = [];
+        const marginalRetention = [];
+        const effectiveRates = [];
+        const marginalRates = [];
+        const chartLabels = [];
+
+        for (let income = 0; income <= 250000; income += 5000) {
+            incomePoints.push(income);
+            const margRate = getMarginalRate(income);
+            marginalRetention.push((1 - margRate) * 100);
+            effectiveRates.push(getEffectiveRate(income) * 100);
+            marginalRates.push(margRate * 100);
+            // 每 50k 显示一个标签
+            if (income % 50000 === 0) {
+                chartLabels.push('$' + (income/1000) + 'k');
+            } else {
+                chartLabels.push('');
+            }
+        }
+
+        // 边际收益率图表
+        const marginalCtx = document.getElementById('marginalChart').getContext('2d');
+        new Chart(marginalCtx, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: '边际收益率 %',
+                    data: marginalRetention,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    stepped: true,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: (ctx) => `年收入: $${incomePoints[ctx[0].dataIndex].toLocaleString()}`,
+                            label: (ctx) => `每多赚 $1 到手: $${(ctx.raw / 100).toFixed(3)}`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: '税前年收入 (NZD)', font: { weight: 'bold' } },
+                        ticks: {
+                            maxRotation: 0,
+                            autoSkip: false
+                        }
+                    },
+                    y: {
+                        title: { display: true, text: '每赚 $1 到手比例 (%)', font: { weight: 'bold' } },
+                        min: 55,
+                        max: 95,
+                        ticks: { callback: v => v + '%' }
+                    }
+                }
+            }
+        });
+
+        // 税率对比图表
+        const rateCtx = document.getElementById('rateChart').getContext('2d');
+        new Chart(rateCtx, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [
+                    {
+                        label: '有效税率',
+                        data: effectiveRates,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.1,
+                        pointRadius: 0
+                    },
+                    {
+                        label: '边际税率',
+                        data: marginalRates,
+                        borderColor: '#ef4444',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        fill: false,
+                        stepped: true,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { usePointStyle: true }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: (ctx) => `年收入: $${incomePoints[ctx[0].dataIndex].toLocaleString()}`,
+                            label: (ctx) => `${ctx.dataset.label}: ${ctx.raw.toFixed(1)}%`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: '税前年收入 (NZD)', font: { weight: 'bold' } },
+                        ticks: {
+                            maxRotation: 0,
+                            autoSkip: false
+                        }
+                    },
+                    y: {
+                        title: { display: true, text: '税率 (%)', font: { weight: 'bold' } },
+                        min: 0,
+                        max: 45,
+                        ticks: { callback: v => v + '%' }
+                    }
+                }
+            }
+        });
+
+        // 计算器
+        function calculateTax() {
+            const income = parseFloat(document.getElementById('incomeInput').value);
+            if (isNaN(income) || income < 0) {
+                alert('请输入有效的收入金额');
+                return;
+            }
+
+            const incomeTax = calculateTaxForIncome(income);
+            const accLevy = calculateACC(income);
+            const totalDeductions = incomeTax + accLevy;
+            const netIncome = income - totalDeductions;
+            const effectiveRate = (totalDeductions / income) * 100;
+            const marginalRate = getMarginalRate(income) * 100;
+            const marginalNet = 1 - getMarginalRate(income) - ACC_RATE;
+
+            document.getElementById('resGross').textContent = '$' + income.toLocaleString();
+            document.getElementById('resNet').textContent = '$' + netIncome.toLocaleString(undefined, {maximumFractionDigits: 2});
+            document.getElementById('resTax').textContent = '$' + incomeTax.toLocaleString(undefined, {maximumFractionDigits: 2});
+            document.getElementById('resACC').textContent = '$' + accLevy.toLocaleString(undefined, {maximumFractionDigits: 2});
+            document.getElementById('resEffective').textContent = effectiveRate.toFixed(1) + '%';
+            document.getElementById('resMarginal').textContent = marginalRate + '%';
+            document.getElementById('resMarginalNet').textContent = '$' + marginalNet.toFixed(3);
+            document.getElementById('resMonthly').textContent = '$' + (netIncome / 12).toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('resWeekly').textContent = '$' + (netIncome / 52).toLocaleString(undefined, {maximumFractionDigits: 0});
+
+            const netPercent = (netIncome / income) * 100;
+            const deductPercent = (totalDeductions / income) * 100;
+            document.getElementById('barNet').style.width = netPercent + '%';
+            document.getElementById('barNet').textContent = '到手 ' + netPercent.toFixed(0) + '%';
+            document.getElementById('barTax').style.width = deductPercent + '%';
+            document.getElementById('barTax').textContent = '扣除 ' + deductPercent.toFixed(0) + '%';
+            document.getElementById('barLabels').textContent = `到手 $${netIncome.toLocaleString(undefined, {maximumFractionDigits: 0})} | 扣除 $${totalDeductions.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+
+            document.getElementById('calcResult').style.display = 'block';
+        }
+
+        document.getElementById('incomeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateTax();
+        });
+
+        // 生成 $80k-$200k 详细表格
+        function generateHighIncomeTable() {
+            const incomes = [80000, 90000, 100000, 110000, 120000, 130000, 140000, 142283, 150000, 160000, 170000, 180000, 190000, 200000];
+            const tbody = document.getElementById('highIncomeTable');
+
+            incomes.forEach((income, index) => {
+                const incomeTax = calculateTaxForIncome(income);
+                const acc = calculateACC(income);
+                const totalDeduct = incomeTax + acc;
+                const netIncome = income - totalDeduct;
+                const takeHomePercent = ((netIncome / income) * 100).toFixed(1);
+                const margRate = getMarginalRate(income) * 100;
+
+                // 计算边际到手（含ACC）
+                let marginalNet;
+                if (income > ACC_MAX_INCOME) {
+                    marginalNet = (1 - getMarginalRate(income)).toFixed(3); // ACC已到上限
+                } else {
+                    marginalNet = (1 - getMarginalRate(income) - ACC_RATE).toFixed(3);
+                }
+
+                // 高亮关键行
+                let rowStyle = '';
+                let highlight = '';
+                if (income === 142283) {
+                    rowStyle = 'background: #fff3cd;';
+                    highlight = ' ⚡ ACC上限';
+                } else if (income === 180000) {
+                    rowStyle = 'background: #ffebee;';
+                    highlight = ' ⚠️ 39%起点';
+                }
+
+                const row = document.createElement('tr');
+                row.style.cssText = rowStyle;
+                row.innerHTML = `
+                    <td style="padding: 12px; text-align: center; font-weight: 600;">$${income.toLocaleString()}${highlight}</td>
+                    <td style="padding: 12px; text-align: center; color: #e53935;">$${incomeTax.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                    <td style="padding: 12px; text-align: center; color: #e53935;">$${acc.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                    <td style="padding: 12px; text-align: center; color: #43a047; font-weight: 600;">$${netIncome.toLocaleString(undefined, {maximumFractionDigits: 0})}</td>
+                    <td style="padding: 12px; text-align: center; color: #1976d2;">${takeHomePercent}%</td>
+                    <td style="padding: 12px; text-align: center;">${margRate}%</td>
+                    <td style="padding: 12px; text-align: center; color: #43a047; font-weight: 600;">$${marginalNet}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // 页面加载时生成表格
+        generateHighIncomeTable();
+    </script>
+</body>
+</html>
