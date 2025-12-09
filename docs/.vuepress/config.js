@@ -95,6 +95,7 @@ export default defineUserConfig({
       'text': '怀大IT课程',
       'children': [
         '/courses/CSMAX596.md',
+        '/courses/README.md',
         '/courses/abc-difference.md',
         '/courses/assessment-forms.md',
         '/courses/compx519.md',
@@ -111,12 +112,14 @@ export default defineUserConfig({
     {
       'text': '英语学习',
       'children': [
+        '/english/README.md',
         '/english/chatgpt-speaking.md'
       ]
     },
     {
       'text': '生活',
       'children': [
+        '/life/README.md',
         '/life/expenses.md',
         '/life/nz-tax.md'
       ]
@@ -133,6 +136,7 @@ export default defineUserConfig({
     {
       'text': '签证',
       'children': [
+        '/visa/README.md',
         '/visa/common-questions.md',
         '/visa/diy-preparation.md',
         '/visa/post-study-visa.md',
@@ -148,7 +152,7 @@ export default defineUserConfig({
     }
   ]
 },
-    
+
     repo: 'Danielyan86/nz-life-handbook',
     docsDir: 'docs',
     
