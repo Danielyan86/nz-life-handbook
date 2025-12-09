@@ -161,9 +161,8 @@ export default defineUserConfig({
     
     lastUpdated: true,
     lastUpdatedText: '最后更新',
-    
-    contributors: true,
-    contributorsText: '贡献者',
+
+    contributors: false,
   }),
   
   plugins: [
