@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新西兰留学时间线海报</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+
+  .controls {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 10px 28px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    transition: opacity .2s;
+  }
+  .btn:active { opacity: .7; }
+  .btn-primary { background: #FF2442; color: #fff; }
+  .btn-secondary { background: #fff; color: #333; border: 1px solid #ddd; }
+
+  /* ── 海报主体 ── */
+  #poster {
+    width: 390px;
+    background: linear-gradient(160deg, #fff8f4 0%, #fff3f8 50%, #f4f8ff 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    position: relative;
+  }
+
+  /* 顶部装饰 */
+  .poster-header {
+    background: linear-gradient(135deg, #FF2442 0%, #ff6b6b 60%, #ffa07a 100%);
+    padding: 32px 28px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .poster-header::before {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    top: -60px; right: -40px;
+  }
+  .poster-header::after {
+    content: '';
+    position: absolute;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+    bottom: -20px; left: 20px;
+  }
+  .header-tag {
+    display: inline-block;
+    background: rgba(255,255,255,.25);
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: .5px;
+  }
+  .header-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    position: relative;
+    z-index: 1;
+  }
+  .header-sub {
+    color: rgba(255,255,255,.85);
+    font-size: 13px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 时间线区域 */
+  .timeline-wrap {
+    padding: 24px 24px 16px;
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 0;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  /* 左侧：年份轴 */
+  .tl-left {
+    width: 72px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tl-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+  .tl-line {
+    width: 2px;
+    flex: 1;
+    min-height: 16px;
+    background: linear-gradient(to bottom, #e0e0e0, #e8e8e8);
+    margin: 3px 0;
+  }
+  .tl-item:last-child .tl-line { display: none; }
+
+  /* 右侧：内容卡片 */
+  .tl-right {
+    flex: 1;
+    padding: 0 0 20px 12px;
+  }
+  .tl-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: .3px;
+    margin-bottom: 3px;
+  }
+  .tl-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  }
+  .tl-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 3px;
+  }
+  .tl-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  /* 颜色系统 */
+  .c-red    { background: #fff0f2; } .dot-red    { background: linear-gradient(135deg,#FF2442,#ff6b6b); }
+  .c-orange { background: #fff5ee; } .dot-orange { background: linear-gradient(135deg,#ff8c42,#ffb347); }
+  .c-yellow { background: #fffbee; } .dot-yellow { background: linear-gradient(135deg,#f9c74f,#f8961e); }
+  .c-green  { background: #f0fff4; } .dot-green  { background: linear-gradient(135deg,#43aa8b,#90be6d); }
+  .c-teal   { background: #f0fafb; } .dot-teal   { background: linear-gradient(135deg,#0096c7,#48cae4); }
+  .c-blue   { background: #f0f4ff; } .dot-blue   { background: linear-gradient(135deg,#4361ee,#7209b7); }
+  .c-purple { background: #f8f0ff; } .dot-purple { background: linear-gradient(135deg,#7209b7,#b5179e); }
+
+  .tag-red    { background: #fff0f2; color: #FF2442; }
+  .tag-orange { background: #fff5ee; color: #e76f00; }
+  .tag-yellow { background: #fffbee; color: #c9820a; }
+  .tag-green  { background: #f0fff4; color: #2d9b6e; }
+  .tag-teal   { background: #f0fafb; color: #0077a8; }
+  .tag-blue   { background: #f0f4ff; color: #3a56d4; }
+  .tag-purple { background: #f8f0ff; color: #7209b7; }
+
+  /* 底部 */
+  .poster-footer {
+    margin: 0 24px 24px;
+    background: linear-gradient(135deg, #FF2442 0%, #ff8c42 100%);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left { color: #fff; }
+  .footer-name { font-size: 14px; font-weight: 700; }
+  .footer-id   { font-size: 11px; opacity: .85; margin-top: 2px; }
+  .footer-qr {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,.25);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .footer-tip {
+    text-align: center;
+    font-size: 11px;
+    color: #bbb;
+    padding: 10px 0 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button class="btn btn-primary" onclick="generatePoster()">📸 生成海报</button>
+  <button class="btn btn-secondary" onclick="window.scrollTo(0,0)">↑ 回顶部</button>
+</div>
+
+<div id="poster">
+  <!-- 顶部 -->
+  <div class="poster-header">
+    <div class="header-tag">🌿 真实经历 · 亲身分享</div>
+    <div class="header-title">新西兰留学<br>完整时间线</div>
+    <div class="header-sub">从萌生想法 → 回国修整，历时 2.5 年</div>
+  </div>
+
+  <!-- 时间线 -->
+  <div class="timeline-wrap">
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-red">💭</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2023.10</div>
+        <div class="tl-card c-red">
+          <div class="tl-name">萌生出国想法</div>
+          <div class="tl-desc">首选新加坡，尝试直接找工作出国，几月无果后决定走留学路线</div>
+          <span class="tl-tag tag-red">起点</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-orange">🎯</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2024.01 — 04</div>
+        <div class="tl-card c-orange">
+          <div class="tl-name">雅思备考</div>
+          <div class="tl-desc">密集备考3个月，4月底成绩刚好通过 6.5 分</div>
+          <span class="tl-tag tag-orange">语言关</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-yellow">🎓</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2024.05</div>
+        <div class="tl-card c-yellow">
+          <div class="tl-name">申请学校 · 5天拿Offer</div>
+          <div class="tl-desc">广撒网申请5所学校，怀卡托大学5天即下Offer</div>
+          <span class="tl-tag tag-yellow">✅ 录取</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-green">📋</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2024.05 — 06</div>
+        <div class="tl-card c-green">
+          <div class="tl-name">签证申请 · 顺利获签</div>
+          <div class="tl-desc">体检、提交材料、收到AIP，6月4日正式获签</div>
+          <span class="tl-tag tag-green">✈️ 获签</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-teal">🏫</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2024.07</div>
+        <div class="tl-card c-teal">
+          <div class="tl-name">抵达新西兰 · 正式入学</div>
+          <div class="tl-desc">汉密尔顿，找房、注册报到、开银行卡，B学期开始</div>
+          <span class="tl-tag tag-teal">落地</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-yellow">🏆</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2024.10 — 2025.02</div>
+        <div class="tl-card c-yellow">
+          <div class="tl-name">获暑期奖学金 8000刀</div>
+          <div class="tl-desc">跟导师做AI船舶生物入侵项目，同学暑假我几乎门没出</div>
+          <span class="tl-tag tag-yellow">💰 奖学金</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-blue">🔬</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2025.03</div>
+        <div class="tl-card c-blue">
+          <div class="tl-name">助理研究员 + 回国探亲</div>
+          <div class="tl-desc">导师给offer，在校做了几周RA；八个月后终于见到家人</div>
+          <span class="tl-tag tag-blue">科研</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-orange">🚗</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2025.04 — 05</div>
+        <div class="tl-card c-orange">
+          <div class="tl-name">马拉松面试 · 考驾照</div>
+          <div class="tl-desc">开始密集找工作，驾照考了3次才过，从汉密尔顿考到奥克兰</div>
+          <span class="tl-tag tag-orange">求职中</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-green">💼</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2025.06</div>
+        <div class="tl-card c-green">
+          <div class="tl-name">加入 Datacom · AI QA</div>
+          <div class="tl-desc">移居奥克兰，开始工作，因未毕业每周仅20小时</div>
+          <span class="tl-tag tag-green">💼 入职</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-purple">🎓</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2025.11</div>
+        <div class="tl-card c-purple">
+          <div class="tl-name">正式毕业</div>
+          <div class="tl-desc">11月25日收到Completion Letter，当天申请开放工签</div>
+          <span class="tl-tag tag-purple">🎓 毕业</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-teal">🛂</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2025.12</div>
+        <div class="tl-card c-teal">
+          <div class="tl-name">拿到三年开放工签</div>
+          <div class="tl-desc">从申请到获批仅一周，终于可以全职工作</div>
+          <span class="tl-tag tag-teal">🛂 工签</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-red">🔚</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2026.03</div>
+        <div class="tl-card c-red">
+          <div class="tl-name">Datacom 合同到期</div>
+          <div class="tl-desc">没有合适岗位续约，结束这段打工生涯</div>
+          <span class="tl-tag tag-red">告别</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot dot-purple">🤝</div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">2026.04</div>
+        <div class="tl-card c-purple">
+          <div class="tl-name">双向奔赴 · 回国</div>
+          <div class="tl-desc">投了60+份简历，拿到国内小公司offer，双向奔赴，准备回国</div>
+          <span class="tl-tag tag-purple">新起点</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部 -->
+  <div class="poster-footer">
+    <div class="footer-left">
+      <div class="footer-name">不想卷的阿东</div>
+      <div class="footer-id">小红书 588659006</div>
+    </div>
+    <div class="footer-qr">📱</div>
+  </div>
+  <div class="footer-tip">欢迎关注 · 一起聊新西兰留学那些事</div>
+  <div style="height:16px"></div>
+</div>
+
+<script>
+async function generatePoster() {
+  const btn = document.querySelector('.btn-primary');
+  btn.textContent = '⏳ 生成中...';
+  btn.disabled = true;
+
+  try {
+    const poster = document.getElementById('poster');
+    const canvas = await html2canvas(poster, {
+      scale: 3,
+      useCORS: true,
+      backgroundColor: null,
+      logging: false,
+    });
+
+    const link = document.createElement('a');
+    link.download = '新西兰留学时间线.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+
+    btn.textContent = '✅ 已保存';
+    setTimeout(() => {
+      btn.textContent = '📸 生成海报';
+      btn.disabled = false;
+    }, 2000);
+  } catch (e) {
+    console.error(e);
+    btn.textContent = '❌ 失败，重试';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
