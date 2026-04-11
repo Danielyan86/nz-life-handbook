@@ -14,6 +14,8 @@ This is a VuePress 2.0 documentation site for a New Zealand student life handboo
 - **Node.js**: >= 16
 - **npm**: >= 8
 
+**Note**: `docs/.vuepress/config.js` uses ES module syntax (`import`/`export default`), not CommonJS. `scripts/update-sidebar.js` uses CommonJS (`require`/`module.exports`).
+
 ## Essential Commands
 
 ### Development
@@ -71,9 +73,10 @@ This file contains:
 
 `scripts/update-sidebar.js` automates sidebar generation:
 - Scans `docs/` directories (preparation, visa, life, courses, work, english)
-- Extracts H1 titles from markdown files for display text
 - Generates sidebar config structure matching VuePress format
 - Updates `config.js` by regex-replacing the sidebar section
+
+**Important**: The script must be run from the repo root (not from `docs/`). It only includes directories listed in the `dirMapping` object inside the script. If adding a new top-level section (e.g., `docs/housing/`), you must add it to `dirMapping` in `scripts/update-sidebar.js` as well. Files within each section are sorted alphabetically.
 
 ### Static Assets
 
@@ -93,6 +96,10 @@ This file contains:
 3. **Testing**: Use `npm run dev` to preview changes locally
 4. **Deployment**: Push to main branch triggers automatic GitHub Pages deployment
 
+## Source Material
+
+`datalib/小红书笔记/` contains raw draft notes (小红书-formatted posts) that serve as source material for the handbook. These are **not published** to the site — they are drafts and personal notes that get refined and moved into `docs/` as polished content.
+
 ## Content Guidelines
 
 Per CONTRIBUTING.md and README.md:
@@ -101,6 +108,7 @@ Per CONTRIBUTING.md and README.md:
 - Follow existing Markdown formatting
 - Cite sources when quoting external content
 - Content is in Chinese (zh-CN)
+- There is no test suite — verify changes by running `npm run dev` and checking the browser
 
 ## Configuration Files
 
